@@ -6,21 +6,19 @@ import com.redoz.onclass.domain.api.ITechnologyServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/technologies")
+@RequestMapping("/technologies/")
 @RequiredArgsConstructor
 public class TechnologyRestControllerAdapter {
     private final ITechnologyServicePort technologyServicePort;
     private final ITechnologyRequestMapper technologyRequestMapper;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Void> createTechnology(@RequestBody CreateTechnologyRequest createTechnologyRequest) {
         technologyServicePort.saveTechnology(technologyRequestMapper.createRequestToModel(createTechnologyRequest));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
 }
