@@ -1,9 +1,7 @@
 package com.redoz.onclass.adapters.driven.jpa.mysql.adapter;
 
-import com.redoz.onclass.adapters.driven.jpa.mysql.exception.NoDataFoundException;
 import com.redoz.onclass.adapters.driven.jpa.mysql.mapper.ITechnologyEntityMapper;
 import com.redoz.onclass.adapters.driven.jpa.mysql.repository.ITechnologyRepository;
-import com.redoz.onclass.adapters.driven.jpa.mysql.utils.JpaAdapterConstants;
 import com.redoz.onclass.domain.model.Technology;
 import com.redoz.onclass.domain.spi.ITechnologyPersistencePort;
 import lombok.RequiredArgsConstructor;
@@ -33,13 +31,8 @@ public class TechnologyPersistenceAdapter implements ITechnologyPersistencePort 
     public List<Technology> findAllTechnologies(int page, int size, boolean isAsc) {
         Sort sort = isAsc ? Sort.by("name").ascending() : Sort.by("name").descending();
         Pageable pageable = PageRequest.of(page, size, sort);
-        List<Technology> technologies = technologyEntityMapper.toModelList(technologyRepository.findAll(pageable).getContent());
 
-        if (technologies.isEmpty()) {
-            throw new NoDataFoundException(JpaAdapterConstants.NO_DATA_FOUND_TECHNOLOGY_EXCEPTION_MESSAGE);
-        }
-
-        return technologies;
+        return technologyEntityMapper.toModelList(technologyRepository.findAll(pageable).getContent());
     }
 
 

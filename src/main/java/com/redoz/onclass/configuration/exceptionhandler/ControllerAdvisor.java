@@ -1,6 +1,6 @@
 package com.redoz.onclass.configuration.exceptionhandler;
 
-import com.redoz.onclass.adapters.driven.jpa.mysql.exception.NoDataFoundException;
+import com.redoz.onclass.domain.exception.NoDataFoundException;
 import com.redoz.onclass.configuration.Constants;
 import com.redoz.onclass.domain.exception.TechnologyAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
