@@ -1,11 +1,13 @@
 package com.redoz.onclass.configuration.exceptionhandler;
 
+import com.redoz.onclass.adapters.driven.jpa.mysql.exception.NoDataFoundException;
 import com.redoz.onclass.configuration.Constants;
 import com.redoz.onclass.domain.exception.TechnologyAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -38,4 +40,15 @@ public class ControllerAdvisor {
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NoDataFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleNoDataFoundException(NoDataFoundException e) {
+        ExceptionResponse response = new ExceptionResponse(String.format(Constants.NO_DATA_FOUND_EXCEPTION_MESSAGE, e.getMessage()), HttpStatus.NOT_FOUND.toString(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+        ExceptionResponse response = new ExceptionResponse(e.getMessage(), HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now());
+        return ResponseEntity.badRequest().body(response);
+    }
 }
