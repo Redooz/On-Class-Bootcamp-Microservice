@@ -5,6 +5,8 @@ import com.redoz.onclass.domain.exception.TechnologyAlreadyExistsException;
 import com.redoz.onclass.domain.model.Technology;
 import com.redoz.onclass.domain.spi.ITechnologyPersistencePort;
 
+import java.util.List;
+
 public class TechnologyUseCase implements ITechnologyServicePort {
     private final ITechnologyPersistencePort technologyPersistencePort;
 
@@ -19,5 +21,10 @@ public class TechnologyUseCase implements ITechnologyServicePort {
         }
 
         technologyPersistencePort.saveTechnology(technology);
+    }
+
+    @Override
+    public List<Technology> findAllTechnologies(int page, int size, boolean isAsc) {
+        return technologyPersistencePort.findAllTechnologies(page, size, isAsc);
     }
 }
