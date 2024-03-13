@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/technologies/")
 @RequiredArgsConstructor
@@ -16,9 +18,10 @@ public class TechnologyRestControllerAdapter {
     private final ITechnologyRequestMapper technologyRequestMapper;
 
     @PostMapping("")
-    public ResponseEntity<Void> createTechnology(@RequestBody CreateTechnologyRequest createTechnologyRequest) {
+    public ResponseEntity<Void> createTechnology(@RequestBody @Valid CreateTechnologyRequest createTechnologyRequest) {
         technologyServicePort.saveTechnology(technologyRequestMapper.createRequestToModel(createTechnologyRequest));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
 
 }
