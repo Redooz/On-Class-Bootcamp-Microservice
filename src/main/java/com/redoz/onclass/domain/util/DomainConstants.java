@@ -14,6 +14,4 @@ public class DomainConstants {
     public static final String FIELD_NAME_NULL_MESSAGE = "'name'";
     public static final String FIELD_DIRECTION_NULL_MESSAGE = "'direction'";
     public static final String FIELD_DESCRIPTION_NULL_MESSAGE = "'description'";
-    public static final String FIELD_NAME_LENGTH_MESSAGE = "'name'";
-    public static final String FIELD_DESCRIPTION_LENGTH_MESSAGE = "'description'";
 }

@@ -1,4 +1,4 @@
-package com.redoz.onclass.adapters.driven.jpa.mysql.exception;
+package com.redoz.onclass.domain.exception;
 
 public class TechnologyAlreadyExistsException extends RuntimeException {
     public TechnologyAlreadyExistsException(String technologyName) {

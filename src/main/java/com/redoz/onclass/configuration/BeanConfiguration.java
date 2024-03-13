@@ -1,6 +1,6 @@
 package com.redoz.onclass.configuration;
 
-import com.redoz.onclass.adapters.driven.jpa.mysql.adapter.TechnologyAdapter;
+import com.redoz.onclass.adapters.driven.jpa.mysql.adapter.TechnologyPersistenceAdapter;
 import com.redoz.onclass.adapters.driven.jpa.mysql.mapper.ITechnologyEntityMapper;
 import com.redoz.onclass.adapters.driven.jpa.mysql.repository.ITechnologyRepository;
 import com.redoz.onclass.domain.api.ITechnologyServicePort;
@@ -18,7 +18,7 @@ public class BeanConfiguration {
 
     @Bean
     public ITechnologyPersistencePort technologyPersistencePort() {
-        return new TechnologyAdapter(technologyRepository, technologyEntityMapper);
+        return new TechnologyPersistenceAdapter(technologyRepository, technologyEntityMapper);
     }
 
     @Bean
