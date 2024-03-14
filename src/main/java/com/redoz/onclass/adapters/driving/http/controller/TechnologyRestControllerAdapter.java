@@ -3,6 +3,7 @@ package com.redoz.onclass.adapters.driving.http.controller;
 import com.redoz.onclass.adapters.driving.http.dto.request.CreateTechnologyRequest;
 import com.redoz.onclass.adapters.driving.http.dto.response.FindTechnologyResponse;
 import com.redoz.onclass.adapters.driving.http.mapper.ITechnologyRequestMapper;
+import com.redoz.onclass.adapters.driving.http.utils.FindAllTechnologiesConstants;
 import com.redoz.onclass.domain.api.ITechnologyServicePort;
 import com.redoz.onclass.domain.model.Technology;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,10 @@ public class TechnologyRestControllerAdapter {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<FindTechnologyResponse>> findAllTechnologies(@RequestParam int page, @RequestParam int size, @RequestParam boolean isAsc) {
+    public ResponseEntity<List<FindTechnologyResponse>> findAllTechnologies(
+            @RequestParam(defaultValue = FindAllTechnologiesConstants.DEFAULT_PAGE) int page,
+            @RequestParam(defaultValue = FindAllTechnologiesConstants.DEFAULT_SIZE) int size,
+            @RequestParam(defaultValue = FindAllTechnologiesConstants.DEFAULT_IS_ASC) boolean isAsc) {
         List<Technology> technologies = technologyServicePort.findAllTechnologies(page, size, isAsc);
         List<FindTechnologyResponse> responseList = technologies.stream().map(technologyRequestMapper::modelToFindResponse).toList();
 
