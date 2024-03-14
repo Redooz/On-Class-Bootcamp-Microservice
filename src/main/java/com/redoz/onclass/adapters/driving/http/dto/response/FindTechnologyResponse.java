@@ -8,5 +8,4 @@ import lombok.Getter;
 public class FindTechnologyResponse {
     private final String name;
     private final String description;
-    private final String direction;
 }

@@ -35,8 +35,8 @@ class TechnologyRestControllerAdapterTest {
 
     @Test
     void shouldReturnCreatedWhenTechnologyIsCreated() {
-        CreateTechnologyRequest createTechnologyRequest = new CreateTechnologyRequest("Java", "A programming language", "Software Development");
-        Technology technology = new Technology(1L, "Java", "A programming language", "Software Development");
+        CreateTechnologyRequest createTechnologyRequest = new CreateTechnologyRequest("Java", "A programming language");
+        Technology technology = new Technology(1L, "Java", "A programming language");
         when(technologyRequestMapper.createRequestToModel(createTechnologyRequest)).thenReturn(technology);
 
         ResponseEntity<Void> responseEntity = technologyRestControllerAdapter.createTechnology(createTechnologyRequest);
@@ -52,8 +52,8 @@ class TechnologyRestControllerAdapterTest {
         int size = 10;
         boolean isAsc = true;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(1L, "Java", "A programming language", "Software Development"),
-                new Technology(2L, "Python", "A programming language", "Data Science")
+                new Technology(1L, "Java", "A programming language"),
+                new Technology(2L, "Python", "A programming language")
         );
         when(technologyServicePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
         List<FindTechnologyResponse> expectedResponses = expectedTechnologies.stream()
@@ -75,8 +75,8 @@ class TechnologyRestControllerAdapterTest {
         int size = 10;
         boolean isAsc = true;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(1L, "Java", "A programming language", "Software Development"),
-                new Technology(2L, "Python", "A programming language", "Data Science")
+                new Technology(1L, "Java", "A programming language"),
+                new Technology(2L, "Python", "A programming language")
         );
         when(technologyServicePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
         List<FindTechnologyResponse> expectedResponses = expectedTechnologies.stream()
@@ -98,8 +98,8 @@ class TechnologyRestControllerAdapterTest {
         int size = 10;
         boolean isAsc = false;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(2L, "Python", "A programming language", "Data Science"),
-                new Technology(1L, "Java", "A programming language", "Software Development")
+                new Technology(2L, "Python", "A programming language"),
+                new Technology(1L, "Java", "A programming language")
         );
         when(technologyServicePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
         List<FindTechnologyResponse> expectedResponses = expectedTechnologies.stream()

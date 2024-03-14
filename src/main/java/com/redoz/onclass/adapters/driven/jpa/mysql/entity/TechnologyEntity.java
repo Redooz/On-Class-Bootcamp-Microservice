@@ -21,5 +21,4 @@ public class TechnologyEntity {
     private String name;
     @Column(length = 90)
     private String description;
-    private String direction;
 }
