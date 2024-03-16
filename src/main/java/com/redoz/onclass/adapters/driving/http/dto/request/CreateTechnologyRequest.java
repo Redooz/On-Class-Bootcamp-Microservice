@@ -18,7 +18,4 @@ public class CreateTechnologyRequest {
     @NotBlank(message = TechnologyRequestConstants.DESCRIPTION_IS_MANDATORY)
     @Size(max = TechnologyRequestConstants.DESCRIPTION_MAX_LENGTH_VALUE, message = TechnologyRequestConstants.DESCRIPTION_MAX_LENGTH)
     private final String description;
-
-    @NotBlank(message = TechnologyRequestConstants.DIRECTION_IS_MANDATORY)
-    private final String direction;
 }
