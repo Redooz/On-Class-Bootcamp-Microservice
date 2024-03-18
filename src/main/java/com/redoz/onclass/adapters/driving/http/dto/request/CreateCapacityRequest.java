@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class CreateTechnologyRequest {
+public class CreateCapacityRequest {
     @NotBlank(message = RequestConstants.NAME_IS_MANDATORY)
     @Size(max = RequestConstants.NAME_MAX_LENGTH_VALUE, message = RequestConstants.NAME_MAX_LENGTH)
     private final String name;
@@ -18,4 +19,7 @@ public class CreateTechnologyRequest {
     @NotBlank(message = RequestConstants.DESCRIPTION_IS_MANDATORY)
     @Size(max = RequestConstants.DESCRIPTION_MAX_LENGTH_VALUE, message = RequestConstants.DESCRIPTION_MAX_LENGTH)
     private final String description;
+
+    @NotEmpty(message = RequestConstants.TECHNOLOGIES_IS_MANDATORY)
+    private final List<CapacityTechnologyItem> technologies;
 }

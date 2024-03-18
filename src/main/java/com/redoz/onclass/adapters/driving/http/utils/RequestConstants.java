@@ -1,7 +1,7 @@
 package com.redoz.onclass.adapters.driving.http.utils;
 
-public class TechnologyRequestConstants {
-    private TechnologyRequestConstants() {
+public class RequestConstants {
+    private RequestConstants() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -10,6 +10,7 @@ public class TechnologyRequestConstants {
 
     public static final String NAME_IS_MANDATORY = "Name is mandatory";
     public static final String DESCRIPTION_IS_MANDATORY = "Description is mandatory";
+    public static final String TECHNOLOGIES_IS_MANDATORY = "Technologies is mandatory";
 
     public static final String NAME_MAX_LENGTH = "Name max length is " + NAME_MAX_LENGTH_VALUE;
     public static final String DESCRIPTION_MAX_LENGTH = "Description max length is " + DESCRIPTION_MAX_LENGTH_VALUE;
