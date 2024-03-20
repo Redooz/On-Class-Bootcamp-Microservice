@@ -2,7 +2,7 @@ package com.redoz.onclass.domain.util;
 
 public enum OrderByOption {
     NAME("name"),
-    TECHNOLOGY_COUNT("technologies.size"),;
+    TECHNOLOGY_COUNT("technologies");
 
     private final String value;
 
