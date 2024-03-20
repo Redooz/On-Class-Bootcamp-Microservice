@@ -17,7 +17,7 @@ import java.util.Map;
 
 @ControllerAdvice
 @RequiredArgsConstructor
-public class ControllerAdvisor {
+public class TechnologyControllerAdvisor {
     @ExceptionHandler(TechnologyAlreadyExistsException.class)
     public ResponseEntity<ExceptionResponse> handleTechnologyAlreadyExistsException(TechnologyAlreadyExistsException e) {
         ExceptionResponse response = new ExceptionResponse(String.format(Constants.TECHNOLOGY_ALREADY_EXISTS_EXCEPTION_MESSAGE, e.getMessage()), HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now());
