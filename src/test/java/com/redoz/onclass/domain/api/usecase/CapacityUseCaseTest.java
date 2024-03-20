@@ -1,5 +1,6 @@
 package com.redoz.onclass.domain.api.usecase;
 
+import com.redoz.onclass.domain.api.ITechnologyServicePort;
 import com.redoz.onclass.domain.exception.DuplicateTechnologiesException;
 import com.redoz.onclass.domain.exception.ExcessiveTechnologiesException;
 import com.redoz.onclass.domain.exception.InsufficientTechnologiesException;
@@ -23,13 +24,15 @@ class CapacityUseCaseTest {
 
     @Mock
     private ICapacityPersistencePort capacityPersistencePort;
+    @Mock
+    private ITechnologyServicePort technologyServicePort;
 
     private CapacityUseCase capacityUseCase;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        capacityUseCase = new CapacityUseCase(capacityPersistencePort);
+        capacityUseCase = new CapacityUseCase(capacityPersistencePort, technologyServicePort);
     }
 
     @Test

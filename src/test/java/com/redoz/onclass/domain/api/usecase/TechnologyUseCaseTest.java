@@ -113,5 +113,24 @@ class TechnologyUseCaseTest {
 
         assertThrows(NoDataFoundException.class, () -> technologyUseCase.findAllTechnologies(page, size, isAsc));
     }
+
+    @Test
+    void shouldReturnTechnologyWhenExists() {
+        String name = "Java";
+        Technology expectedTechnology = new Technology(1L, name, "A programming language", Collections.emptyList());
+        when(technologyPersistencePort.findTechnologyByName(name)).thenReturn(Optional.of(expectedTechnology));
+
+        Technology actualTechnology = technologyUseCase.findTechnologyByName(name);
+
+        assertEquals(expectedTechnology, actualTechnology);
+    }
+
+    @Test
+    void shouldThrowNoDataFoundExceptionWhenTechnologyDoesNotExist() {
+        String name = "NonExistentTechnology";
+        when(technologyPersistencePort.findTechnologyByName(name)).thenReturn(Optional.empty());
+
+        assertThrows(NoDataFoundException.class, () -> technologyUseCase.findTechnologyByName(name));
+    }
 }
 
