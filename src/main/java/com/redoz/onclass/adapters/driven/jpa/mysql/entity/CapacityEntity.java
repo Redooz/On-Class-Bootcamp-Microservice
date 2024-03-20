@@ -8,13 +8,13 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "technologies")
+@Entity()
+@Table(name = "capacities")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class TechnologyEntity {
+public class CapacityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +25,11 @@ public class TechnologyEntity {
     @Column(length = 90)
     private String description;
 
-    @ManyToMany(mappedBy = "technologies")
-    private List<CapacityEntity> capacities;
+    @ManyToMany
+    @JoinTable(
+            name = "capacities_technologies",
+            joinColumns = @JoinColumn(name = "capacity_id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id")
+    )
+    private List<TechnologyEntity> technologies;
 }

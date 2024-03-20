@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class BeanConfiguration {
+public class TechnologyBeanConfiguration {
     private final ITechnologyRepository technologyRepository;
     private final ITechnologyEntityMapper technologyEntityMapper;
 
