@@ -37,7 +37,7 @@ public class CapacityUseCase implements ICapacityServicePort {
     }
 
     private boolean technologiesAreUnique(List<Technology> technologies) {
-        Set<Technology> uniqueTechnologies = Set.copyOf(technologies);
+        Set<String> uniqueTechnologies = Set.copyOf(technologies.stream().map(Technology::getName).toList());
         return uniqueTechnologies.size() == technologies.size();
     }
 }

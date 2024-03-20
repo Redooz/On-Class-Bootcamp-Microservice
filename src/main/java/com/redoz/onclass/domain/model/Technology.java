@@ -15,7 +15,7 @@ public class Technology {
     public Technology(Long id, String name, String description, List<Capacity> capacities) {
         this.id = id;
         this.name = requireNonNull(name, DomainConstants.FIELD_NAME_NULL_MESSAGE);
-        this.description = requireNonNull(description, DomainConstants.FIELD_DESCRIPTION_NULL_MESSAGE);
+        this.description = description;
         this.capacities = capacities;
     }
 
