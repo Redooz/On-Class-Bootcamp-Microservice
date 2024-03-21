@@ -1,7 +1,17 @@
 package com.redoz.onclass.adapters.driven.jpa.mysql.repository;
 
 import com.redoz.onclass.adapters.driven.jpa.mysql.entity.CapacityEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ICapacityRepository extends JpaRepository<CapacityEntity, Long> {
+    @Query("SELECT c FROM CapacityEntity c " +
+            "ORDER BY SIZE(c.technologies) DESC")
+    Page<CapacityEntity> findAllOrderByTechnologiesCountDesc(Pageable pageable);
+
+    @Query("SELECT c FROM CapacityEntity c " +
+            "ORDER BY SIZE(c.technologies) ASC")
+    Page<CapacityEntity> findAllOrderByTechnologiesCountAsc(Pageable pageable);
 }

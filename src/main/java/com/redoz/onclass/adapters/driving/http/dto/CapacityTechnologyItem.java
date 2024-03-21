@@ -1,4 +1,4 @@
-package com.redoz.onclass.adapters.driving.http.dto.request;
+package com.redoz.onclass.adapters.driving.http.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
