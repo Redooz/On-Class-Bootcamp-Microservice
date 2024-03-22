@@ -31,7 +31,7 @@ class TechnologyUseCaseTest {
 
     @Test
     void shouldSaveTechnologyWhenNotExists() {
-        Technology technology = new Technology(1L, "Java", "A programming language", Collections.emptyList());
+        Technology technology = new Technology(1L, "Java", "A programming language");
         when(technologyPersistencePort.findTechnologyByName(technology.getName())).thenReturn(Optional.empty());
 
         technologyUseCase.saveTechnology(technology);
@@ -41,7 +41,7 @@ class TechnologyUseCaseTest {
 
     @Test
     void shouldThrowExceptionWhenTechnologyExists() {
-        Technology technology = new Technology(1L, "Java", "A programming language", Collections.emptyList());
+        Technology technology = new Technology(1L, "Java", "A programming language");
         when(technologyPersistencePort.findTechnologyByName(technology.getName())).thenReturn(Optional.of(technology));
 
         assertThrows(TechnologyAlreadyExistsException.class, () -> technologyUseCase.saveTechnology(technology));
@@ -54,8 +54,8 @@ class TechnologyUseCaseTest {
         int size = 10;
         boolean isAsc = true;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(1L, "Java", "A programming language", Collections.emptyList()),
-                new Technology(2L, "Python", "A programming language", Collections.emptyList())
+                new Technology(1L, "Java", "A programming language"),
+                new Technology(2L, "Python", "A programming language")
         );
         when(technologyPersistencePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
 
@@ -73,8 +73,8 @@ class TechnologyUseCaseTest {
         int size = 10;
         boolean isAsc = true;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(1L, "Java", "A programming language", Collections.emptyList()),
-                new Technology(2L, "Python", "A programming language", Collections.emptyList())
+                new Technology(1L, "Java", "A programming language"),
+                new Technology(2L, "Python", "A programming language")
         );
         when(technologyPersistencePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
 
@@ -92,8 +92,8 @@ class TechnologyUseCaseTest {
         int size = 10;
         boolean isAsc = false;
         List<Technology> expectedTechnologies = List.of(
-                new Technology(2L, "Python", "A programming language", Collections.emptyList()),
-                new Technology(1L, "Java", "A programming language", Collections.emptyList())
+                new Technology(2L, "Python", "A programming language"),
+                new Technology(1L, "Java", "A programming language")
         );
         when(technologyPersistencePort.findAllTechnologies(page, size, isAsc)).thenReturn(expectedTechnologies);
 
@@ -117,7 +117,7 @@ class TechnologyUseCaseTest {
     @Test
     void shouldReturnTechnologyWhenExists() {
         String name = "Java";
-        Technology expectedTechnology = new Technology(1L, name, "A programming language", Collections.emptyList());
+        Technology expectedTechnology = new Technology(1L, name, "A programming language");
         when(technologyPersistencePort.findTechnologyByName(name)).thenReturn(Optional.of(expectedTechnology));
 
         Technology actualTechnology = technologyUseCase.findTechnologyByName(name);
