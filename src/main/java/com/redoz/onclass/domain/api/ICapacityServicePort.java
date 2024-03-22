@@ -8,4 +8,6 @@ import java.util.List;
 public interface ICapacityServicePort {
     void saveCapacity(Capacity capacity);
     List<Capacity> findAllCapacities(int page, int size, OrderByOption orderBy, boolean isAsc);
+
+    Capacity findCapacityByName(String name);
 }

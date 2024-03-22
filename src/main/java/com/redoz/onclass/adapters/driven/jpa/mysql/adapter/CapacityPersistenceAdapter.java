@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class CapacityPersistenceAdapter implements ICapacityPersistencePort {
@@ -40,5 +41,10 @@ public class CapacityPersistenceAdapter implements ICapacityPersistencePort {
         List<CapacityEntity> capacityEntities = capacityRepository.findAll(pageable).getContent();
 
         return capacityEntityMapper.toModelList(capacityEntities);
+    }
+
+    @Override
+    public Optional<Capacity> findCapacityByName(String name) {
+        return capacityRepository.findByName(name).map(capacityEntityMapper::toModel);
     }
 }

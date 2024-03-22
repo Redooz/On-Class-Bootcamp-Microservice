@@ -11,5 +11,6 @@ import java.util.List;
 public interface ICapacityEntityMapper {
     CapacityEntity toEntity(Capacity capacity);
 
+    Capacity toModel(CapacityEntity capacityEntity);
     List<Capacity> toModelList(List<CapacityEntity> capacityEntities);
 }
