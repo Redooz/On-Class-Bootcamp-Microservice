@@ -10,7 +10,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ITechnologyEntityMapper {
     TechnologyEntity toEntity(Technology technology);
-    @Mapping(target = "capacities", ignore = true)
     Technology toModel(TechnologyEntity technologyEntity);
 
     @Mapping(target = "capacities", ignore = true)

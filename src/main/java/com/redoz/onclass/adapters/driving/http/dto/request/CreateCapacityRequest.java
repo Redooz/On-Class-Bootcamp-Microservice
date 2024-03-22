@@ -1,5 +1,6 @@
 package com.redoz.onclass.adapters.driving.http.dto.request;
 
+import com.redoz.onclass.adapters.driving.http.dto.CapacityTechnologyItem;
 import com.redoz.onclass.adapters.driving.http.utils.RequestConstants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -5,10 +5,13 @@ import com.redoz.onclass.domain.api.ITechnologyServicePort;
 import com.redoz.onclass.domain.exception.DuplicateTechnologiesException;
 import com.redoz.onclass.domain.exception.ExcessiveTechnologiesException;
 import com.redoz.onclass.domain.exception.InsufficientTechnologiesException;
+import com.redoz.onclass.domain.exception.NoDataFoundException;
 import com.redoz.onclass.domain.model.Capacity;
 import com.redoz.onclass.domain.model.Technology;
 import com.redoz.onclass.domain.spi.ICapacityPersistencePort;
 import com.redoz.onclass.domain.util.CapacityConstants;
+import com.redoz.onclass.domain.util.DomainConstants;
+import com.redoz.onclass.domain.util.OrderByOption;
 
 import java.util.List;
 import java.util.Set;
@@ -39,6 +42,17 @@ public class CapacityUseCase implements ICapacityServicePort {
         checkIfTechnologiesExists(capacity.getTechnologies());
 
         capacityPersistencePort.saveCapacity(capacity);
+    }
+
+    @Override
+    public List<Capacity> findAllCapacities(int page, int size, OrderByOption orderBy, boolean isAsc) {
+        List<Capacity> capacities = capacityPersistencePort.findAllCapacities(page, size, orderBy, isAsc);
+
+        if (capacities.isEmpty()) {
+            throw new NoDataFoundException(DomainConstants.NO_DATA_FOUND_CAPACITY_EXCEPTION_MESSAGE);
+        }
+
+        return capacities;
     }
 
     private boolean technologiesAreUnique(List<Technology> technologies) {

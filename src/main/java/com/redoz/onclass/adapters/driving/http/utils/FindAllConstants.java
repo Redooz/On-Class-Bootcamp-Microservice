@@ -1,7 +1,7 @@
 package com.redoz.onclass.adapters.driving.http.utils;
 
-public class FindAllTechnologiesConstants {
-    private FindAllTechnologiesConstants() {
+public class FindAllConstants {
+    private FindAllConstants() {
         throw new IllegalStateException("Utility class");
     }
 

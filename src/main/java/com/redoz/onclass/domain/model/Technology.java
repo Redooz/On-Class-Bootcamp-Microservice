@@ -10,13 +10,11 @@ public class Technology {
     private final Long id;
     private final String name;
     private final String description;
-    private final List<Capacity> capacities;
 
-    public Technology(Long id, String name, String description, List<Capacity> capacities) {
+    public Technology(Long id, String name, String description) {
         this.id = id;
         this.name = requireNonNull(name, DomainConstants.FIELD_NAME_NULL_MESSAGE);
         this.description = description;
-        this.capacities = capacities;
     }
 
     public Long getId() {
@@ -31,7 +29,4 @@ public class Technology {
         return description;
     }
 
-    public List<Capacity> getCapacities() {
-        return capacities;
-    }
 }
