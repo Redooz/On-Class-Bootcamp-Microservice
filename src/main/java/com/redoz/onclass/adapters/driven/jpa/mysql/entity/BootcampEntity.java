@@ -8,13 +8,13 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity()
-@Table(name = "capacities")
+@Entity
+@Table(name = "bootcamps")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class CapacityEntity {
+public class BootcampEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,12 +27,9 @@ public class CapacityEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "capacities_technologies",
-            joinColumns = @JoinColumn(name = "capacity_id"),
-            inverseJoinColumns = @JoinColumn(name = "technology_id")
+            name = "bootcamps_capacities",
+            joinColumns = @JoinColumn(name = "bootcamp_id"),
+            inverseJoinColumns = @JoinColumn(name = "capacity_id")
     )
-    private List<TechnologyEntity> technologies;
-
-    @ManyToMany(mappedBy = "capacities")
-    private List<BootcampEntity> bootcamps;
+    private List<CapacityEntity> capacities;
 }
