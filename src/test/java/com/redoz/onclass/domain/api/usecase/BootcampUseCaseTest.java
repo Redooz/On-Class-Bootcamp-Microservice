@@ -73,7 +73,7 @@ class BootcampUseCaseTest {
     @Test
     void shouldThrowDuplicateCapacitiesExceptionWhenCapacitiesAreNotUnique() {
         Capacity capacity1 = new Capacity(1L,"Capacity", "", Collections.emptyList());
-        Capacity capacity2 = new Capacity(1L, "Capacity", "", Collections.emptyList());
+        Capacity capacity2 = new Capacity(2L, "Capacity", "", Collections.emptyList());
         Capacity capacity3 = new Capacity(3L, "Capacity3", "", Collections.emptyList());
 
         List<Capacity> capacities = Arrays.asList(capacity1, capacity2, capacity3);

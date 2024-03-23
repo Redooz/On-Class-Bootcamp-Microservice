@@ -49,7 +49,9 @@ public class BootcampUseCase implements IBootcampServicePort {
     }
 
     private boolean capacitiesAreUnique(List<Capacity> capacities) {
-        Set<String> uniqueCapacities = Set.copyOf(capacities.stream().map(Capacity::getName).toList());
-        return uniqueCapacities.size() == capacities.size();
+        Set<Long> uniqueCapacitiesId = Set.copyOf(capacities.stream().map(Capacity::getId).toList());
+        Set<String> uniqueCapacitiesName = Set.copyOf(capacities.stream().map(Capacity::getName).toList());
+
+        return uniqueCapacitiesName.size() == capacities.size() && uniqueCapacitiesId.size() == capacities.size();
     }
 }
