@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class FindCapacityResponse {
+    private final Long id;
     private final String name;
     private final String description;
     private final List<CapacityTechnologyItem> technologies;

@@ -55,9 +55,16 @@ public class CapacityUseCase implements ICapacityServicePort {
         return capacities;
     }
 
+    @Override
+    public Capacity findCapacityByName(String name) {
+        return capacityPersistencePort.findCapacityByName(name).orElseThrow(() -> new NoDataFoundException(name));
+    }
+
     private boolean technologiesAreUnique(List<Technology> technologies) {
-        Set<String> uniqueTechnologies = Set.copyOf(technologies.stream().map(Technology::getName).toList());
-        return uniqueTechnologies.size() == technologies.size();
+        Set<String> uniqueTechnologiesNames = Set.copyOf(technologies.stream().map(Technology::getName).toList());
+        Set<Long> uniqueTechnologiesIds = Set.copyOf(technologies.stream().map(Technology::getId).toList());
+
+        return uniqueTechnologiesNames.size() == technologies.size() && uniqueTechnologiesIds.size() == technologies.size();
     }
 
     private void checkIfTechnologiesExists(List<Technology> technologies) {
