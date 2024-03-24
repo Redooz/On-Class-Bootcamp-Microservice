@@ -39,7 +39,7 @@ public class BootcampRestControllerAdapter {
             @RequestParam(defaultValue = FindAllBootcampsConstants.DEFAULT_SORT_BY) String orderBy,
             @RequestParam(defaultValue = FindAllConstants.DEFAULT_IS_ASC) boolean isAsc) {
         List<Bootcamp> bootcamps = bootcampServicePort.findAllBootcamps(page, size, BootcampOrderByOption.valueOf(orderBy.toUpperCase()), isAsc);
-        List<FindBootcampResponse> responseList = bootcamps.stream().map(bootcampRequestMapper::modelToFindResponse).toList();
+        List<FindBootcampResponse> responseList = bootcampRequestMapper.modelToFindResponseList(bootcamps);
 
         return ResponseEntity.ok().body(responseList);
     }
