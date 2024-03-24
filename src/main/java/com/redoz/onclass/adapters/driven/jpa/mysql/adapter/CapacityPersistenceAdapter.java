@@ -5,7 +5,7 @@ import com.redoz.onclass.adapters.driven.jpa.mysql.mapper.ICapacityEntityMapper;
 import com.redoz.onclass.adapters.driven.jpa.mysql.repository.ICapacityRepository;
 import com.redoz.onclass.domain.model.Capacity;
 import com.redoz.onclass.domain.spi.ICapacityPersistencePort;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,8 +25,8 @@ public class CapacityPersistenceAdapter implements ICapacityPersistencePort {
     }
 
     @Override
-    public List<Capacity> findAllCapacities(int page, int size, OrderByOption orderBy, boolean isAsc) {
-        if (orderBy == OrderByOption.TECHNOLOGY_COUNT) {
+    public List<Capacity> findAllCapacities(int page, int size, CapacityOrderByOption orderBy, boolean isAsc) {
+        if (orderBy == CapacityOrderByOption.TECHNOLOGY_COUNT) {
             Sort sort = Sort.by(orderBy.getValue());
             Pageable pageable = PageRequest.of(page, size, sort);
 

@@ -5,7 +5,8 @@ import com.redoz.onclass.adapters.driven.jpa.mysql.mapper.IBootcampEntityMapper;
 import com.redoz.onclass.adapters.driven.jpa.mysql.repository.IBootcampRepository;
 import com.redoz.onclass.domain.model.Bootcamp;
 import com.redoz.onclass.domain.spi.IBootcampPersistencePort;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.BootcampOrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,8 +28,8 @@ public class BootcampPersistenceAdapter implements IBootcampPersistencePort {
     }
 
     @Override
-    public List<Bootcamp> findAllBootcamps(int page, int size, OrderByOption orderBy, boolean isAsc) {
-        if (orderBy == OrderByOption.TECHNOLOGY_COUNT) {
+    public List<Bootcamp> findAllBootcamps(int page, int size, BootcampOrderByOption orderBy, boolean isAsc) {
+        if (orderBy == BootcampOrderByOption.CAPACITY_COUNT) {
             Sort sort = Sort.by(orderBy.getValue());
             Pageable pageable = PageRequest.of(page, size, sort);
 
@@ -42,7 +43,9 @@ public class BootcampPersistenceAdapter implements IBootcampPersistencePort {
         Pageable pageable = PageRequest.of(page, size, sort);
         List<BootcampEntity> bootcamps = bootcampRepository.findAll(pageable).getContent();
 
+
         return bootcampEntityMapper.toModelList(bootcamps);
 
     }
+
 }

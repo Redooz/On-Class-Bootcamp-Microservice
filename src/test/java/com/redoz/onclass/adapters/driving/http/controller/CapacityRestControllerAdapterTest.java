@@ -7,7 +7,7 @@ import com.redoz.onclass.adapters.driving.http.mapper.ICapacityRequestMapper;
 import com.redoz.onclass.domain.api.ICapacityServicePort;
 import com.redoz.onclass.domain.model.Capacity;
 import com.redoz.onclass.domain.model.Technology;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -68,7 +68,7 @@ class CapacityRestControllerAdapterTest {
                 new Capacity(1L, "ACapacity", "Desc1", Collections.emptyList()),
                 new Capacity(2L, "BCapacity", "Desc2", Collections.emptyList())
         );
-        when(capacityServicePort.findAllCapacities(page, size, OrderByOption.NAME, isAsc)).thenReturn(expectedCapacities);
+        when(capacityServicePort.findAllCapacities(page, size, CapacityOrderByOption.NAME, isAsc)).thenReturn(expectedCapacities);
         List<FindCapacityResponse> expectedResponses = expectedCapacities.stream()
                 .map(capacityRequestMapper::modelToFindResponse)
                 .toList();
@@ -77,7 +77,7 @@ class CapacityRestControllerAdapterTest {
         ResponseEntity<List<FindCapacityResponse>> responseEntity = capacityRestControllerAdapter.findAllCapacities(page, size, "name", isAsc);
 
         // Then
-        verify(capacityServicePort, times(1)).findAllCapacities(page, size, OrderByOption.NAME, isAsc);
+        verify(capacityServicePort, times(1)).findAllCapacities(page, size, CapacityOrderByOption.NAME, isAsc);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedResponses, responseEntity.getBody());
     }
@@ -92,7 +92,7 @@ class CapacityRestControllerAdapterTest {
                 new Capacity(2L, "BCapacity", "Desc2", Collections.emptyList()),
                 new Capacity(1L, "ACapacity", "Desc1", Collections.emptyList())
         );
-        when(capacityServicePort.findAllCapacities(page, size, OrderByOption.NAME, isAsc)).thenReturn(expectedCapacities);
+        when(capacityServicePort.findAllCapacities(page, size, CapacityOrderByOption.NAME, isAsc)).thenReturn(expectedCapacities);
         List<FindCapacityResponse> expectedResponses = expectedCapacities.stream()
                 .map(capacityRequestMapper::modelToFindResponse)
                 .toList();
@@ -101,7 +101,7 @@ class CapacityRestControllerAdapterTest {
         ResponseEntity<List<FindCapacityResponse>> responseEntity = capacityRestControllerAdapter.findAllCapacities(page, size, "name", isAsc);
 
         // Then
-        verify(capacityServicePort, times(1)).findAllCapacities(page, size, OrderByOption.NAME, isAsc);
+        verify(capacityServicePort, times(1)).findAllCapacities(page, size, CapacityOrderByOption.NAME, isAsc);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedResponses, responseEntity.getBody());
     }
@@ -116,7 +116,7 @@ class CapacityRestControllerAdapterTest {
                 new Capacity(2L, "BCapacity", "Desc2", Collections.emptyList()),
                 new Capacity(1L, "ACapacity", "Desc1", Collections.nCopies(3, new Technology(1L, "Java", "A programming language")))
         );
-        when(capacityServicePort.findAllCapacities(page, size, OrderByOption.TECHNOLOGY_COUNT, isAsc)).thenReturn(expectedCapacities);
+        when(capacityServicePort.findAllCapacities(page, size, CapacityOrderByOption.TECHNOLOGY_COUNT, isAsc)).thenReturn(expectedCapacities);
         List<FindCapacityResponse> expectedResponses = expectedCapacities.stream()
                 .map(capacityRequestMapper::modelToFindResponse)
                 .toList();
@@ -125,7 +125,7 @@ class CapacityRestControllerAdapterTest {
         ResponseEntity<List<FindCapacityResponse>> responseEntity = capacityRestControllerAdapter.findAllCapacities(page, size, "technology_count", isAsc);
 
         // Then
-        verify(capacityServicePort, times(1)).findAllCapacities(page, size, OrderByOption.TECHNOLOGY_COUNT, isAsc);
+        verify(capacityServicePort, times(1)).findAllCapacities(page, size, CapacityOrderByOption.TECHNOLOGY_COUNT, isAsc);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedResponses, responseEntity.getBody());
 
@@ -141,7 +141,7 @@ class CapacityRestControllerAdapterTest {
                 new Capacity(1L, "ACapacity", "Desc1", Collections.nCopies(3, new Technology(1L, "Java", "A programming language"))),
                 new Capacity(2L, "BCapacity", "Desc2", Collections.emptyList())
         );
-        when(capacityServicePort.findAllCapacities(page, size, OrderByOption.TECHNOLOGY_COUNT, isAsc)).thenReturn(expectedCapacities);
+        when(capacityServicePort.findAllCapacities(page, size, CapacityOrderByOption.TECHNOLOGY_COUNT, isAsc)).thenReturn(expectedCapacities);
         List<FindCapacityResponse> expectedResponses = expectedCapacities.stream()
                 .map(capacityRequestMapper::modelToFindResponse)
                 .toList();
@@ -150,7 +150,7 @@ class CapacityRestControllerAdapterTest {
         ResponseEntity<List<FindCapacityResponse>> responseEntity = capacityRestControllerAdapter.findAllCapacities(page, size, "technology_count", isAsc);
 
         // Then
-        verify(capacityServicePort, times(1)).findAllCapacities(page, size, OrderByOption.TECHNOLOGY_COUNT, isAsc);
+        verify(capacityServicePort, times(1)).findAllCapacities(page, size, CapacityOrderByOption.TECHNOLOGY_COUNT, isAsc);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedResponses, responseEntity.getBody());
     }
