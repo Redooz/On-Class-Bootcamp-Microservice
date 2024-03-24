@@ -9,7 +9,7 @@ import com.redoz.onclass.domain.model.Capacity;
 import com.redoz.onclass.domain.model.Technology;
 import com.redoz.onclass.domain.spi.ICapacityPersistencePort;
 import com.redoz.onclass.domain.util.CapacityConstants;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -93,7 +93,7 @@ class CapacityUseCaseTest {
         // Given
         int page = 0;
         int size = 10;
-        OrderByOption orderBy = OrderByOption.NAME;
+        CapacityOrderByOption orderBy = CapacityOrderByOption.NAME;
         boolean isAsc = true;
         List<Capacity> capacities = List.of(new Capacity(1L, "Capacity1", "Desc1", List.of()));
         when(capacityPersistencePort.findAllCapacities(page, size, orderBy, isAsc)).thenReturn(capacities);
@@ -111,7 +111,7 @@ class CapacityUseCaseTest {
         // Given
         int page = 0;
         int size = 10;
-        OrderByOption orderBy = OrderByOption.NAME;
+        CapacityOrderByOption orderBy = CapacityOrderByOption.NAME;
         boolean isAsc = true;
         when(capacityPersistencePort.findAllCapacities(page, size, orderBy, isAsc)).thenReturn(Collections.emptyList());
 

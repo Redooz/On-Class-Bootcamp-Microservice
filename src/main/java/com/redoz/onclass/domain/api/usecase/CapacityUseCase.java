@@ -11,7 +11,7 @@ import com.redoz.onclass.domain.model.Technology;
 import com.redoz.onclass.domain.spi.ICapacityPersistencePort;
 import com.redoz.onclass.domain.util.CapacityConstants;
 import com.redoz.onclass.domain.util.DomainConstants;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 
 import java.util.List;
 import java.util.Set;
@@ -45,7 +45,7 @@ public class CapacityUseCase implements ICapacityServicePort {
     }
 
     @Override
-    public List<Capacity> findAllCapacities(int page, int size, OrderByOption orderBy, boolean isAsc) {
+    public List<Capacity> findAllCapacities(int page, int size, CapacityOrderByOption orderBy, boolean isAsc) {
         List<Capacity> capacities = capacityPersistencePort.findAllCapacities(page, size, orderBy, isAsc);
 
         if (capacities.isEmpty()) {

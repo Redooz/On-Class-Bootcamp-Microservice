@@ -7,7 +7,7 @@ import com.redoz.onclass.adapters.driving.http.utils.FindAllCapacitiesConstants;
 import com.redoz.onclass.adapters.driving.http.utils.FindAllConstants;
 import com.redoz.onclass.domain.api.ICapacityServicePort;
 import com.redoz.onclass.domain.model.Capacity;
-import com.redoz.onclass.domain.util.OrderByOption;
+import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class CapacityRestControllerAdapter {
             @RequestParam(defaultValue = FindAllConstants.DEFAULT_SIZE) int size,
             @RequestParam(defaultValue = FindAllCapacitiesConstants.DEFAULT_SORT_BY) String orderBy,
             @RequestParam(defaultValue = FindAllConstants.DEFAULT_IS_ASC) boolean isAsc) {
-        List<Capacity> capacities = capacityServicePort.findAllCapacities(page, size, OrderByOption.valueOf(orderBy.toUpperCase()), isAsc);
+        List<Capacity> capacities = capacityServicePort.findAllCapacities(page, size, CapacityOrderByOption.valueOf(orderBy.toUpperCase()), isAsc);
         List<FindCapacityResponse> responseList = capacities.stream().map(capacityRequestMapper::modelToFindResponse).toList();
 
         return ResponseEntity.ok().body(responseList);
