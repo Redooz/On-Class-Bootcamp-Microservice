@@ -12,7 +12,6 @@ import com.redoz.onclass.domain.spi.IBootcampPersistencePort;
 import com.redoz.onclass.domain.util.BootcampConstants;
 import com.redoz.onclass.domain.util.BootcampOrderByOption;
 import com.redoz.onclass.domain.util.DomainConstants;
-import com.redoz.onclass.domain.util.CapacityOrderByOption;
 
 import java.util.List;
 import java.util.Set;
