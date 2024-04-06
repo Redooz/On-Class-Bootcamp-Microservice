@@ -23,7 +23,7 @@ public class VersionEntity {
 
     private LocalDate endDate;
 
-    private int numOfStudents;
+    private int maxNumOfStudents;
 
     @ManyToOne
     @JoinColumn(name = "bootcamp_id")
