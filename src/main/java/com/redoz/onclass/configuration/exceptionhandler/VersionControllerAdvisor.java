@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class VersionControllerAdvisor {
     @ExceptionHandler(InvalidDateException.class)
     public ResponseEntity<ExceptionResponse> handleInvalidDateException(InvalidDateException e) {
-        ExceptionResponse response = new ExceptionResponse(e.getMessage(), HttpStatus.BAD_GATEWAY.toString(), LocalDateTime.now());
+        ExceptionResponse response = new ExceptionResponse(e.getMessage(), HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now());
         return ResponseEntity.badRequest().body(response);
     }
 }
