@@ -3,9 +3,14 @@ package com.redoz.onclass.domain.api.usecase;
 import com.redoz.onclass.domain.api.IBootcampServicePort;
 import com.redoz.onclass.domain.api.IVersionServicePort;
 import com.redoz.onclass.domain.exception.InvalidDateException;
+import com.redoz.onclass.domain.exception.NoDataFoundException;
 import com.redoz.onclass.domain.model.Version;
 import com.redoz.onclass.domain.spi.IVersionPersistencePort;
+import com.redoz.onclass.domain.util.DomainConstants;
 import com.redoz.onclass.domain.util.VersionConstants;
+import com.redoz.onclass.domain.util.VersionOrderByOption;
+
+import java.util.List;
 
 public class VersionUseCase implements IVersionServicePort {
     private final IVersionPersistencePort versionPersistencePort;
@@ -27,5 +32,16 @@ public class VersionUseCase implements IVersionServicePort {
 
 
         versionPersistencePort.saveVersion(version);
+    }
+
+    @Override
+    public List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc) {
+        List<Version> versions = versionPersistencePort.findAllVersions(page, size, orderBy, isAsc);
+
+        if (versions.isEmpty()) {
+            throw new NoDataFoundException(DomainConstants.NO_DATA_FOUND_VERSION_EXCEPTION_MESSAGE);
+        }
+
+        return versions;
     }
 }
