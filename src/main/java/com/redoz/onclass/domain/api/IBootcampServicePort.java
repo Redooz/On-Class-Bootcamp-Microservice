@@ -10,4 +10,6 @@ public interface IBootcampServicePort {
     void saveBootcamp(Bootcamp bootcamp);
 
     List<Bootcamp> findAllBootcamps(int page, int size, BootcampOrderByOption orderBy, boolean isAsc);
+
+    Bootcamp findBootcampById(Long id);
 }
