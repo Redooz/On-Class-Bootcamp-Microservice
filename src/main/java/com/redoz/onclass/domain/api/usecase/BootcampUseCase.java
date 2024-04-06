@@ -55,6 +55,12 @@ public class BootcampUseCase implements IBootcampServicePort {
         return bootcamps;
     }
 
+    @Override
+    public Bootcamp findBootcampById(Long id) {
+        return bootcampPersistencePort.findBootcampById(id)
+                .orElseThrow(() -> new NoDataFoundException(DomainConstants.NO_DATA_FOUND_BOOTCAMP_EXCEPTION_MESSAGE));
+    }
+
     private void checkIfCapacitiesExist(List<Capacity> capacities) {
         for (Capacity capacity : capacities) {
             // findCapacityByName throws NoDataFoundException if no capacity is found

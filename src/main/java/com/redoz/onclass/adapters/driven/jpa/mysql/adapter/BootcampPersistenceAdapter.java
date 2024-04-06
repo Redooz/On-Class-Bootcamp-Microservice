@@ -6,12 +6,12 @@ import com.redoz.onclass.adapters.driven.jpa.mysql.repository.IBootcampRepositor
 import com.redoz.onclass.domain.model.Bootcamp;
 import com.redoz.onclass.domain.spi.IBootcampPersistencePort;
 import com.redoz.onclass.domain.util.BootcampOrderByOption;
-import com.redoz.onclass.domain.util.CapacityOrderByOption;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BootcampPersistenceAdapter implements IBootcampPersistencePort {
     private final IBootcampRepository bootcampRepository;
@@ -46,6 +46,11 @@ public class BootcampPersistenceAdapter implements IBootcampPersistencePort {
 
         return bootcampEntityMapper.toModelList(bootcamps);
 
+    }
+
+    @Override
+    public Optional<Bootcamp> findBootcampById(Long id) {
+        return bootcampRepository.findById(id).map(bootcampEntityMapper::toModel);
     }
 
 }
