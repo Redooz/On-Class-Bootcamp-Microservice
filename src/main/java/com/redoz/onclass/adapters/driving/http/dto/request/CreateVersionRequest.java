@@ -18,5 +18,7 @@ public class CreateVersionRequest {
     private final LocalDate endDate;
 
     @Min(value = 1, message = VersionConstants.MIN_NUM_OF_STUDENTS)
-    private final int numOfStudents;
+    private final int maxNumOfStudents;
+
+    private final CreateVersionBootcampItem bootcamp;
 }

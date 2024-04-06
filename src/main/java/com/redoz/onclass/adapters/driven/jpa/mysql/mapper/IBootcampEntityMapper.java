@@ -11,4 +11,6 @@ public interface IBootcampEntityMapper {
     BootcampEntity toEntity(Bootcamp bootcamp);
 
     List<Bootcamp> toModelList(List<BootcampEntity> bootcampEntities);
+
+    Bootcamp toModel(BootcampEntity bootcampEntity);
 }
