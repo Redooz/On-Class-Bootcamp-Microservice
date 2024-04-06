@@ -32,4 +32,7 @@ public class BootcampEntity {
             inverseJoinColumns = @JoinColumn(name = "capacity_id")
     )
     private List<CapacityEntity> capacities;
+
+    @OneToMany(mappedBy = "bootcamp")
+    private List<VersionEntity> versions;
 }
