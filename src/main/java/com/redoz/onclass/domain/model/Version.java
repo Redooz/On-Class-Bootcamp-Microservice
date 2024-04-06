@@ -1,15 +1,15 @@
 package com.redoz.onclass.domain.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Version {
     private final Long id;
     private final Long idBootcamp;
-    private final Date startDate;
-    private final Date endDate;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
     private final int maxNumOfStudents;
 
-    public Version(Long id, Long idBootcamp, Date startDate, Date endDate, int maxNumOfStudents) {
+    public Version(Long id, Long idBootcamp, LocalDate startDate, LocalDate endDate, int maxNumOfStudents) {
         this.id = id;
         this.idBootcamp = idBootcamp;
         this.startDate = startDate;
@@ -25,11 +25,11 @@ public class Version {
         return idBootcamp;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
