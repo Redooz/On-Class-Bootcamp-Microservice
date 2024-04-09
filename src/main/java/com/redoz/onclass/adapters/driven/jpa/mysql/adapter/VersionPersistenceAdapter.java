@@ -24,7 +24,12 @@ public class VersionPersistenceAdapter implements IVersionPersistencePort {
     }
 
     @Override
-    public List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc) {
+    public List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc, long bootcampId) {
+        if (bootcampId > 0) {
+            List<VersionEntity> versionEntities = versionRepository.findAllByBootcamp_Id(bootcampId);
+            return versionEntityMapper.toModelList(versionEntities);
+        }
+
         Sort sort = isAsc ? Sort.by(orderBy.getValue()).ascending() : Sort.by(orderBy.getValue()).descending();
         Pageable pageable = PageRequest.of(page, size, sort);
 

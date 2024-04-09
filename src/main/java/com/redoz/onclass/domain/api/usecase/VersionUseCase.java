@@ -35,8 +35,8 @@ public class VersionUseCase implements IVersionServicePort {
     }
 
     @Override
-    public List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc) {
-        List<Version> versions = versionPersistencePort.findAllVersions(page, size, orderBy, isAsc);
+    public List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc, long bootcampId) {
+        List<Version> versions = versionPersistencePort.findAllVersions(page, size, orderBy, isAsc, bootcampId);
 
         if (versions.isEmpty()) {
             throw new NoDataFoundException(DomainConstants.NO_DATA_FOUND_VERSION_EXCEPTION_MESSAGE);

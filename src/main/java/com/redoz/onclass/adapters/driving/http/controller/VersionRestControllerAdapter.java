@@ -49,8 +49,12 @@ public class VersionRestControllerAdapter {
             @RequestParam(defaultValue = FindAllConstants.DEFAULT_PAGE) int page,
             @RequestParam(defaultValue = FindAllConstants.DEFAULT_SIZE) int size,
             @RequestParam(defaultValue = FindAllVersionsConstants.DEFAULT_SORT_BY) String orderBy,
-            @RequestParam(defaultValue = FindAllConstants.DEFAULT_IS_ASC) boolean isAsc) {
-        List<Version> versions = versionServicePort.findAllVersions(page, size, VersionOrderByOption.valueOf(orderBy.toUpperCase()), isAsc);
+            @RequestParam(defaultValue = FindAllConstants.DEFAULT_IS_ASC) boolean isAsc,
+            @RequestParam(defaultValue = "0") long bootcampId
+        ) {
+        List<Version> versions = versionServicePort.findAllVersions(
+                page, size, VersionOrderByOption.valueOf(orderBy.toUpperCase()), isAsc, bootcampId
+        );
         List<FindVersionResponse> responseList = versionRequestMapper.modelToFindResponseList(versions);
 
         return ResponseEntity.ok().body(responseList);

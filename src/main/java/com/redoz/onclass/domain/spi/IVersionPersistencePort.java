@@ -8,5 +8,5 @@ import java.util.List;
 public interface IVersionPersistencePort {
     void saveVersion(Version version);
 
-    List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc);
+    List<Version> findAllVersions(int page, int size, VersionOrderByOption orderBy, boolean isAsc, long bootcampId);
 }
