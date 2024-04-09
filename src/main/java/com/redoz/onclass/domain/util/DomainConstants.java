@@ -16,4 +16,5 @@ public class DomainConstants {
     public static final String NO_DATA_FOUND_TECHNOLOGY_EXCEPTION_MESSAGE = "'technology'";
     public static final String NO_DATA_FOUND_CAPACITY_EXCEPTION_MESSAGE = "'capacity'";
     public static final String NO_DATA_FOUND_BOOTCAMP_EXCEPTION_MESSAGE = "'bootcamp'";
+    public static final String NO_DATA_FOUND_VERSION_EXCEPTION_MESSAGE = "'version'";
 }
