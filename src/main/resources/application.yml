@@ -5,3 +5,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+jwt:
+  secret: ${SECRET_KEY}
