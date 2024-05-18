@@ -41,4 +41,9 @@ public class TechnologyUseCase implements ITechnologyServicePort {
 
         return technologies;
     }
+
+    @Override
+    public Long findAllTechnologiesCount() {
+        return technologyPersistencePort.findAllTechnologiesCount();
+    }
 }

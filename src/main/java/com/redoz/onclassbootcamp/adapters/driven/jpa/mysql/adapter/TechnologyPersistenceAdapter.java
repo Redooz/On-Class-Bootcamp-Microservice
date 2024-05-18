@@ -35,5 +35,9 @@ public class TechnologyPersistenceAdapter implements ITechnologyPersistencePort 
         return technologyEntityMapper.toModelList(technologyRepository.findAll(pageable).getContent());
     }
 
+    @Override
+    public Long findAllTechnologiesCount() {
+        return technologyRepository.count();
+    }
 
 }

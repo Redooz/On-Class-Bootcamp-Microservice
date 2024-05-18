@@ -47,4 +47,9 @@ public class CapacityPersistenceAdapter implements ICapacityPersistencePort {
     public Optional<Capacity> findCapacityByName(String name) {
         return capacityRepository.findByName(name).map(capacityEntityMapper::toModel);
     }
+
+    @Override
+    public Long findAllCapacitiesCount() {
+        return capacityRepository.count();
+    }
 }

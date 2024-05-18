@@ -10,4 +10,6 @@ public interface ICapacityServicePort {
     List<Capacity> findAllCapacities(int page, int size, CapacityOrderByOption orderBy, boolean isAsc);
 
     Capacity findCapacityByName(String name);
+
+    Long findAllCapacitiesCount();
 }

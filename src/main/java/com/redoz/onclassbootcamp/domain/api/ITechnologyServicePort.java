@@ -10,4 +10,6 @@ public interface ITechnologyServicePort {
     List<Technology> findAllTechnologies(int page, int size, boolean isAsc);
 
     Technology findTechnologyByName(String name);
+
+    Long findAllTechnologiesCount();
 }

@@ -56,4 +56,14 @@ public class CapacityRestControllerAdapter {
 
         return ResponseEntity.ok().body(responseList);
     }
+
+    @GetMapping("/count")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Capacities count found"),
+            @ApiResponse(responseCode = "404", description = "Capacities count not found"),
+    })
+    @Operation(summary = "Get all capacities count", description = "Get all capacities count", tags = { "Capacity" })
+    public ResponseEntity<Long> findAllCapacitiesCount() {
+        return ResponseEntity.ok().body(capacityServicePort.findAllCapacitiesCount());
+    }
 }

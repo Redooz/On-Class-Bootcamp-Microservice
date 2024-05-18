@@ -1,6 +1,7 @@
 package com.redoz.onclassbootcamp.configuration.exceptionhandler;
 
 import com.redoz.onclassbootcamp.configuration.Constants;
+import com.redoz.onclassbootcamp.domain.exception.CapacityAlreadyExistsException;
 import com.redoz.onclassbootcamp.domain.exception.DuplicateTechnologiesException;
 import com.redoz.onclassbootcamp.domain.exception.ExcessiveTechnologiesException;
 import com.redoz.onclassbootcamp.domain.exception.InsufficientTechnologiesException;
@@ -15,6 +16,12 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 @RequiredArgsConstructor
 public class CapacityControllerAdvisor {
+    @ExceptionHandler(CapacityAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleCapacityAlreadyExistsException(CapacityAlreadyExistsException e) {
+        ExceptionResponse response = new ExceptionResponse(e.getMessage(), HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now());
+        return ResponseEntity.badRequest().body(response);
+    }
+
     @ExceptionHandler(InsufficientTechnologiesException.class)
     public ResponseEntity<ExceptionResponse> handleInsufficientTechnologiesException(InsufficientTechnologiesException e) {
         ExceptionResponse response = new ExceptionResponse(String.format(Constants.CAPACITY_INSUFFICIENT_TECHNOLOGIES_EXCEPTION_MESSAGE, e.getMessage()), HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now());

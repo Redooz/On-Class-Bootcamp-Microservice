@@ -11,4 +11,6 @@ public interface ITechnologyPersistencePort {
     Optional<Technology> findTechnologyByName(String name);
 
     List<Technology> findAllTechnologies(int page, int size, boolean isAsc);
+
+    Long findAllTechnologiesCount();
 }

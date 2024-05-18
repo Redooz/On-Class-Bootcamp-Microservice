@@ -2,10 +2,7 @@ package com.redoz.onclassbootcamp.domain.api.usecase;
 
 import com.redoz.onclassbootcamp.domain.api.ICapacityServicePort;
 import com.redoz.onclassbootcamp.domain.api.ITechnologyServicePort;
-import com.redoz.onclassbootcamp.domain.exception.DuplicateTechnologiesException;
-import com.redoz.onclassbootcamp.domain.exception.ExcessiveTechnologiesException;
-import com.redoz.onclassbootcamp.domain.exception.InsufficientTechnologiesException;
-import com.redoz.onclassbootcamp.domain.exception.NoDataFoundException;
+import com.redoz.onclassbootcamp.domain.exception.*;
 import com.redoz.onclassbootcamp.domain.model.Capacity;
 import com.redoz.onclassbootcamp.domain.model.Technology;
 import com.redoz.onclassbootcamp.domain.spi.ICapacityPersistencePort;
@@ -39,6 +36,10 @@ public class CapacityUseCase implements ICapacityServicePort {
             throw new DuplicateTechnologiesException(capacity.getName());
         }
 
+        if (capacityPersistencePort.findCapacityByName(capacity.getName()).isPresent()) {
+            throw new CapacityAlreadyExistsException(capacity.getName());
+        }
+
         checkIfTechnologiesExists(capacity.getTechnologies());
 
         capacityPersistencePort.saveCapacity(capacity);
@@ -58,6 +59,11 @@ public class CapacityUseCase implements ICapacityServicePort {
     @Override
     public Capacity findCapacityByName(String name) {
         return capacityPersistencePort.findCapacityByName(name).orElseThrow(() -> new NoDataFoundException(name));
+    }
+
+    @Override
+    public Long findAllCapacitiesCount() {
+        return capacityPersistencePort.findAllCapacitiesCount();
     }
 
     private boolean technologiesAreUnique(List<Technology> technologies) {

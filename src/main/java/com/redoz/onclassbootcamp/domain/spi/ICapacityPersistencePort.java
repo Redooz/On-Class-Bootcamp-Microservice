@@ -12,4 +12,6 @@ public interface ICapacityPersistencePort {
     List<Capacity> findAllCapacities(int page, int size, CapacityOrderByOption orderBy, boolean isAsc);
 
     Optional<Capacity> findCapacityByName(String name);
+
+    Long findAllCapacitiesCount();
 }

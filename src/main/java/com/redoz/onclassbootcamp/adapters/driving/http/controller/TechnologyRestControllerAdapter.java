@@ -52,4 +52,27 @@ public class TechnologyRestControllerAdapter {
 
         return ResponseEntity.ok().body(responseList);
     }
+
+    @GetMapping("/available")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Technologies found"),
+            @ApiResponse(responseCode = "404", description = "Technologies not found"),
+    })
+    @Operation(summary = "Get all available technologies", description = "Get all available technologies", tags = { "Technology" })
+    public ResponseEntity<List<FindTechnologyResponse>> findAllAvailableTechnologies() {
+        List<Technology> technologies = technologyServicePort.findAllTechnologies(0, Integer.MAX_VALUE, true);
+        List<FindTechnologyResponse> responseList = technologies.stream().map(technologyRequestMapper::modelToFindResponse).toList();
+
+        return ResponseEntity.ok().body(responseList);
+    }
+
+    @GetMapping("/count")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Technologies count found"),
+            @ApiResponse(responseCode = "404", description = "Technologies count not found"),
+    })
+    @Operation(summary = "Get all technologies count", description = "Get all technologies count", tags = { "Technology" })
+    public ResponseEntity<Long> findAllTechnologiesCount() {
+        return ResponseEntity.ok().body(technologyServicePort.findAllTechnologiesCount());
+    }
 }

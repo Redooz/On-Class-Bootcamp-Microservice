@@ -35,6 +35,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String token = authHeader.substring(7);
 
+        if (!jwtService.tokenIsValid(token)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         final Role role = jwtService.getRoleFromToken(token);
 
         var authentication = new UsernamePasswordAuthenticationToken(null, null, getAuthorities(role.name()));
